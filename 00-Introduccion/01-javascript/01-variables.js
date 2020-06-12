@@ -70,6 +70,58 @@ if(1){
     console.log("Es Falso");
 }
 
+if(null){
+    console.log("Es truty"); // Falsy
+}else{
+    console.log("Es Falso");
+}
+
+if(undefined){
+    console.log("Es truty"); // Falsy
+}else{
+    console.log("Es Falso");
+}
+
+
+//Orden de importancia
+
+// 1) const
+// 2) let
+// 3) Nunca utilizar el var,
+
+// Objetos JavaScript (JSON) - Arreglos
+
+const alex = {
+
+    nombre: "Alex", // llave: valor,
+    apellido: 'Carrera',
+    edad: 27,
+    hijos: null,
+    casado: false,
+    zapato: undefined,
+    ropa: {
+        color: 'plomo',
+        talla: 40,
+    },
+    mascotas: ['Cachetes','Pequitas', 'Panda']
+
+}; // object
+
+alex.nombre; //Alex
+alex.apellido;  //Carrera
+
+
+const arregloNumeros = []; // object
+
+console.log(alex);
+console.log(arregloNumeros);
+
+
+
+
+
+
+
 
 
 
