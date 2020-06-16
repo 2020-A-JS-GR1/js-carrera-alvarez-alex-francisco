@@ -50,7 +50,7 @@ if(undefined) {
 
 // Objetos Js (JSON) - Arreglos
 
-const ivan = {
+const alex = {
     nombre: 'Alex', //lave: valor,
     'apellido': 'Carrera',
     edad: 23,
@@ -66,10 +66,69 @@ const ivan = {
     ],
 }; // object
 
-ivan.nombre; // 'Alex'
-ivan.apellido // 'Carrera'
+alex.nombre; // 'Alex'
+alex.apellido // 'Carrera'
+alex["nombre"]; //'Alex'
+console.log(alex);
+alex.nombre = ""; // alex["nombre"];
+console.log(alex);
+alex.sueldo;
+console.log(alex.sueldo); //undefined
+alex.sueldo = 1.2;
+console.log(alex.sueldo); //1.2
+alex["gastos"] = 0.8;
+console.log(alex.gastos); //0.8
+alex.nombre = undefined;
+delete alex.nombre; //Elimina la llave "nombre"
+console.log(Object.keys(alex));
+console.log(Object.values(alex));
 
+// Lista de variables por valor en JS
+
+// number
+// string
+// boolean
+// object
+// undefined
+
+let edadAlex = 27;
+let edadFrancisco = edadAlex;
+console.log(edadAlex); //27
+console.log(edadFrancisco); //27
+edadAlex = edadAlex+1;
+console.log(edadAlex); // 28
+console.log(edadFrancisco); // 27 //Variables por valor
+
+// Lista de variables por referencia en JS
+
+let rafael = {
+    nombre: "Rafael"
+};
+
+let lenin = rafael;
+console.log(rafael);
+console.log(lenin);
+lenin.nombre = "Lenin";
+console.log(rafael);
+console.log(lenin);
+delete rafael.nombre;
+console.log(rafael);
+console.log(lenin);
+
+let lenin = Object.assign({},rafael);
+//let lenin = Object.assign({},rafael);
+console.log(rafael);
+console.log(lenin);
+lenin.nombre = "Lenin";
+delete rafael.nombre;
+console.log(rafael);
+console.log(lenin);
+
+
+
+/*
 const arregloNumeros = []; //object
 
-console.log(ivan);
+console.log(alex);
 console.log(arregloNumeros);
+ */
