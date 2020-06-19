@@ -16,3 +16,5 @@ for(let numero in arreglo){ //INDICES
     arreglo[indice];
     console.log('indice',indice);
 }
+
+//const arreglo = [6,7,8,9,10];
