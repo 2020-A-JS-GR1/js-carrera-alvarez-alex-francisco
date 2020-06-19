@@ -50,3 +50,90 @@ const arreglo = [
         nota: 12
     }
 ];
+
+
+//FIND
+
+// devolver una expresion -> TRUTY FALSY
+
+const respuestaFind = arreglo
+.find(
+    function (valorActual,indiceActual, arregloCompleto) {
+        console.log('valorActual', valorActual);
+        console.log('indiceActual', indiceActual);
+        console.log('arregloCompleto', arregloCompleto);
+        return valorActual.nombre === "Cristian";
+    }
+);
+console.log('respuestaFind', respuestaFind); //undefined
+
+
+//FINDINDEX
+
+// devolver una expresion -> TRUTY FALSY
+
+const respuestaIndex = arreglo
+    .findIndex(
+        function (valorActual,indiceActual, arregloCompleto) {
+            console.log('valorActual', valorActual);
+            console.log('indiceActual', indiceActual);
+            console.log('arregloCompleto', arregloCompleto);
+            return valorActual.nombre === "Cristian";
+        }
+    );
+console.log('respuestaIndex',respuestaIndex);
+
+//FOREACH
+
+
+const respuestaForEach = arreglo
+    .forEach(
+        function (valorActual,indiceActual, arregloCompleto) {
+            console.log('valorActual', valorActual);
+            console.log('indiceActual', indiceActual);
+            console.log('arregloCompleto', arregloCompleto);
+            return valorActual.nombre === "Cristian";
+        }
+    );
+console.log('respuestaForEach',respuestaForEach);
+
+//MAP
+//devolver nuevo elemento
+
+const respuestaMap = arreglo
+    .map(
+        (valorActual,indiceActual, arregloCompleto) => {
+            const nuevoElemento = {
+                id: valorActual.id,
+                nombre: valorActual.nombre,
+                nota: valorActual.nota + 1,
+            }
+            return nuevoElemento;
+        }
+    );
+console.log('respuestaMap',respuestaMap);
+console.log('arreglo', arreglo);
+
+const respuestaMapNuevo = arreglo
+    .map(
+
+        //funcion Anonima -> NO TIENE NOMBRE
+        //funcion flecha GORDA
+        (valorActual) => {
+            return valorActual.nota;
+        }
+    );
+console.log('respuestaMapNuevo',respuestaMapNuevo);
+console.log('arreglo', arreglo);
+
+//FILTER
+//devolver expresion TRUTY FALSY
+
+const respuestaFilter = arreglo
+    .filter(
+        (valorActual,indiceActual, arregloCompleto) => {
+                return valorActual.nota >= 16;
+            }
+    );
+console.log('respuestaFilter',respuestaFilter);
+console.log('arreglo', arreglo);
