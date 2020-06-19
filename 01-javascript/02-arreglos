@@ -6,16 +6,18 @@ const arregloTodo= [
 ];
 
 // for of
-
+/*
 for(let numero of arreglo){ //VALORES
     console.log('numero',numero);
 }
-
+*/
 // for in
-for(let numero in arreglo){ //INDICES
+/*
+for(let indice in arreglo){ //INDICES
     arreglo[indice];
     console.log('indice',indice);
 }
+*/
 
 //const arreglo = [6,7,8,9,10];
 
@@ -25,4 +27,13 @@ arreglo.pop(); // Eliminar al final un elemento
 // [6,7,8,9,10]
 arreglo.unshift(5); // Añadir al principio del arreglo
 // [5,6,7,8,9,10]
+// arreglo.splice(0,1);
+arreglo.splice(0,1);
+// arreglo.splice(0,0,3,4,5);
+arreglo.splice(0,0,3,4,5);
 
+
+const indice = arreglo.indexOf(9); //VALOR -> POSICION (Indice) : -1
+console.log('indice', indice);
+arreglo.splice(indice, 1);
+//arreglo.findIndex();
