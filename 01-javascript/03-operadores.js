@@ -165,4 +165,28 @@ const respuestaEvery = arreglo
 
 console.log("respuestaEvery", respuestaEvery);
 
+// reduce           izq-der
+// reduceRigth      der-izq
+
+
+const respuestaReduce = arreglo
+    .reduce(
+        (valorAcumulado,valorActual,indiceActual, arregloCompleto) => {
+            return valorAcumulado - valorActual.nota;
+        },
+        500
+    );
+console.log("respuestaReduce", respuestaReduce);
+
+
+const arregloEstudiantesMenoresANueve = arreglo
+    .map((v) => v.nota *1.3) // añadiendo el 30%
+    .filter((nota) => nota < 9) // Busco a los < 9
+
+const totalPuntosEstudiantes = arregloEstudiantesMenoresANueve
+    .reduce((acumulado, actual) => acumulado + actual, 0); //total
+
+const notaPromedio = totalPuntosEstudiantes / arregloEstudiantesMenoresANueve.length;
+
+
 
