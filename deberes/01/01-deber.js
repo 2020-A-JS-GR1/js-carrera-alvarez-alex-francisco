@@ -56,24 +56,26 @@ SumarDecimas();
 
 // Por cada vocal dentro de la palabra del estudiante 0.1 decimas
 // Por cada consonante dentro de la palabra del estudiante 0.05 decimas
+
 function SumarDecimas() {
 
-    const arregloNuevoPromedio = arregloEstudiantes
-        .map(
-            (valorActual) => {
-                const nuevoElemento = {
-                    id: valorActual.id,
-                    nombre: valorActual.nombre,
-                    nota: valorActual.nota,
+    const vocales = ["a", "e", "i", "o", "u"];
+
+    const arrayMap = arregloEstudiantes.map(
+        (valorAcumulado) => {
+            const alumno = Object.assign({},valorAcumulado);
+            for (let letter of valorAcumulado.nombre) {
+                if (vocales.find(vowel => vowel === letter)) {
+                    alumno.nota = Number.parseFloat(alumno.nota + 0.1).toPrecision(3) ;
+                }else {
+                    alumno.nota = Number.parseFloat(alumno.nota + 0.05).toPrecision(3) ;
                 }
-                return nuevoElemento;
             }
-        );
-   // console.log('NuevasNotas:',arregloNuevoPromedio);
+            return alumno;
+        }
+    ).filter(student => student.nota >= 14.0 );
 
-    arregloNuevoPromedio.
-    forEach(value => )
-
+    console.log("Array de estudiantes aprobados: ", arrayMap);
 }
 
 
