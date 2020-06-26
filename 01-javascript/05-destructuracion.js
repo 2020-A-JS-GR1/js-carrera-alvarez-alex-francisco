@@ -1,25 +1,21 @@
-const alex = {
-    name: "Alex",
+// Juntar 2 objetos
+const adrian = {
+    nombre: "Adrian"
 };
-const francisco = {
-    lastname: "Carrera",
+const carolina = {
+    apellido: "Eguez"
 };
-const array_one = [1,2,3,4,5];
-const array_two = [6,7,8,9,10];
+const adrianCarolina = {
+    ...adrian,
+    ...carolina
+}
+console.log('adrianCarolina', adrianCarolina);
 
-const alex_francisco = {
-    ...alex,
-    ...francisco,
-};
-alex_francisco.name = "johanna";
-console.log('Alex Francisco', alex_francisco);
-console.log('Orignial alex',alex);
-
-const super_array = [
-    ...array_one,
-    ...array_two
-];
-
-super_array[0] = 100;
-console.log('Super arreglo', super_array);
-console.log('Array 1 Original', array_one);
+// Juntar 2 arreglos
+const arregloUno = [1, 2, 3, 4, 5];
+const arregloDos = [6, 7, 8, 9, 10];
+const superArreglo = [
+    ...arregloUno,
+    ...arregloDos
+]
+console.log('superArreglo', superArreglo);
