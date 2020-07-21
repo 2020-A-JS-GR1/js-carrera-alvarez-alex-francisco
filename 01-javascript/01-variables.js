@@ -104,7 +104,7 @@ console.log(edadFrancisco); // 27 //Variables por valor
 let rafael = {
     nombre: "Rafael"
 };
-
+/*
 let lenin = rafael;
 console.log(rafael);
 console.log(lenin);
@@ -114,7 +114,7 @@ console.log(lenin);
 delete rafael.nombre;
 console.log(rafael);
 console.log(lenin);
-
+*/
 let lenin = Object.assign({},rafael);
 //let lenin = Object.assign({},rafael);
 console.log(rafael);
