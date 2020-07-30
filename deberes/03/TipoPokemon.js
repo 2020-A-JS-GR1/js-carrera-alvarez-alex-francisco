@@ -159,7 +159,90 @@ async function pokemonMenu() {
 const ingresoTipo = ()=>{
     return inquire.prompt([{
         type: "input",
-        name: ""
-    }])
+        name: "tipo",
+        message: "Ingrese el tipo de PoKéMoN",
+    },
+        {
+            type: "input",
+            name: "fuerteContra",
+            message: "Ingrese el Tipo de PoKéMoN contra el cual es fuerte"
+        },
+        {
+            type: "input",
+            name: "debilContra",
+            message: "Ingrese el Tipo de PoKéMoN contra el cual es debil"
+        },
+        {
+            type: "input",
+            name: "resistenteContra",
+            message: "Ingrese el Tipo de PoKéMoN contra el cual es resistente"
+        },
+        {
+            type: "input",
+            name: "vulnerableContra",
+            message: "Ingrese el Tipo de PoKéMoN contra el cual es vulnerable"
+        },
+        ])
 }
 
+const ingresoPokemon = ()=>{
+    return inquire.prompt([{
+        type: "input",
+        name: "nombrePokemon",
+        message: "Ingrese el nombre del PoKéMoN",
+    },
+        {
+            type: "list",
+            name: "tipo",
+            message: "Seleccione el tipo de PoKéMoN",
+            choise: tiposPokemon.map(element => element.tipo)
+        },
+        {
+            type: "boolean",
+            name: "sexo",
+            message: "El PoKéMoN es: Masculino(true), Femenino(false)",
+        },
+        {
+            type: "input",
+            name: "altura",
+            message: "Ingrese la alturea del PoKéMoN"
+        },
+        {
+            type: "input",
+            name: "peso",
+            message: "Ingrese el peso del PoKéMoN"
+        },
+    ])
+}
+
+const escribirArchivo = (datos) => {
+    return  new Promise(
+        (resolve,reject) => {
+            fs.writeFile(path, datos, 'utf-8',
+            (error)=>{
+                if (error){
+                    reject(error);
+                }else{
+                    resolve();
+                }
+            })
+        }
+    )
+}
+
+const leerArchivo=()=> {
+    return new Promise(
+        (resolve,reject)=>{
+            fs.readFile(path,'utf-8',
+                (error, contenido)=>{
+                    if(error){
+                        reject(error)
+                    }else{
+                        resolve(contenido);
+                    }
+                })
+        }
+    )
+}
+
+return mainMenu();
