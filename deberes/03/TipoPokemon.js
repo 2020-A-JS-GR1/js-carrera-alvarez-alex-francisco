@@ -14,49 +14,49 @@ const promiseMenuOptions = () => {
         });
 }
 
-const promiseCrearPokemon = (pokemon) => {
+const promiseCrearPokemon = (game) => {
     return inquirer
         .prompt([
             {
                 type: 'input',
                 name: 'pokemon',
                 message: 'Ingrese el nombre del PoKéMoN',
-                default: pokemon,
+                default: game,
             },
             {
                 type: 'list',
-                name: 'tipo',
-                message: 'Elija el tipo de PoKéMoN',
-                choises: ['Agua','Fuego','Hielo','Volador','Trueno','Roca']
+                name: 'category',
+                message: 'Elija el tipo de PoKéMoN:',
+                choices: ['Agua', 'Fuego', 'Trueno', 'Roca', 'Hielo', 'Volador', 'Normal', 'Psiquico', 'Raro']
             },
             {
                 type: 'list',
-                name: 'activo',
-                message: 'El PoKéMoN tiene PS disponibles',
-                choises: ['Si','No']
+                name: 'completed',
+                message: 'El PoKéMoN cuenta con PS disponibles para la batalla?',
+                choices: ['Si', 'No']
+            },
+            {
+                type: 'list',
+                name: 'recommended',
+                message: 'El sexo del PoKéMoN es:?',
+                choices: ['Male', 'Female']
             },
             {
                 type: 'input',
                 name: 'peso',
                 message: 'Ingrese el peso del PoKéMoN',
-                default: '0'
-            },
-            {
-                type: 'list',
-                name: 'sexo',
-                message: 'Seleccione el sexo del PoKéMoN',
-                choises: ['Masculino','Femenino']
+                defualt: '0'
             }
         ]);
 }
 
-const promiseSeleccionarTipo = (tipo) => {
+const promiseSeleccionarTipo = (games) => {
     return inquirer
         .prompt({
             type: 'list',
-            name: 'tipo',
-            message: 'Elija un Tipo de PoKéMoN',
-            choises: tipo,
+            name: 'game',
+            message: 'Seleccione el PoKéMoN que desea actualizar:',
+            choices: games,
         });
 }
 

@@ -1,3 +1,1 @@
-{"pokemon":"Pikachu","tipo":"Electrico","activo":"Si","peso":"50","sexo":"Masculino"}
-{"pokemon":"Charmander","tipo":"Fuego","activo":"Si","peso":"60","sexo":"Masculino"}
-{"pokemon":"Squirtle","tipo":"Agua","activo":"Si","peso":"50","sexo":"Masculino"}
+{"pokemon":"charmander","category":"Fuego","completed":"Si","recommended":"Male","peso":"50"}
