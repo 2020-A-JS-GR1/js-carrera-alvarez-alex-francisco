@@ -1,11 +1,11 @@
 const fs = require('fs');
 const path = "informacionCRUD.txt";
-const inquire = require ('inquirer');
+const inquirer = require('inquirer');
 
 let caseOption = true;
 
 const promiseMenuOptions = () => {
-    return inquire
+    return inquirer
         .prompt({
             type: 'list',
             name: 'option',
@@ -15,12 +15,13 @@ const promiseMenuOptions = () => {
 }
 
 const promiseCrearPokemon = (pokemon) => {
-    return inquire
+    return inquirer
         .prompt([
             {
                 type: 'input',
                 name: 'pokemon',
                 message: 'Ingrese el nombre del PoKéMoN',
+                default: pokemon,
             },
             {
                 type: 'list',
@@ -38,6 +39,7 @@ const promiseCrearPokemon = (pokemon) => {
                 type: 'input',
                 name: 'peso',
                 message: 'Ingrese el peso del PoKéMoN',
+                default: '0'
             },
             {
                 type: 'list',
@@ -48,13 +50,13 @@ const promiseCrearPokemon = (pokemon) => {
         ]);
 }
 
-const promiseSeleccionarTipo = (tipos) => {
-    return inquire
+const promiseSeleccionarTipo = (tipo) => {
+    return inquirer
         .prompt({
             type: 'list',
-            name: 'game',
+            name: 'tipo',
             message: 'Elija un Tipo de PoKéMoN',
-            choises: tipos,
+            choises: tipo,
         });
 }
 
@@ -179,7 +181,7 @@ try {
                     ));
                     pokemonList.splice(pokemonList.findIndex(
                         val => {
-                            return val.game === resEliminar.pokemon;
+                            return val.pokemon === resEliminar.pokemon;
                         }
                     ),1);
                     await promiseEscribirArchivo(actualizarArchivo(pokemonList));
