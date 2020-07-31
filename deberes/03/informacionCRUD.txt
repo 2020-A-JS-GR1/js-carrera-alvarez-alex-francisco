@@ -1,0 +1,1 @@
+{"pokemon":"Pikachu","tipo":"Electrico","activo":"Si","peso":"50","sexo":"Masculino"}
