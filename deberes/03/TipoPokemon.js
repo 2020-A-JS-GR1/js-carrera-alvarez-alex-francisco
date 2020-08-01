@@ -55,7 +55,7 @@ const promiseSeleccionarTipo = (games) => {
         .prompt({
             type: 'list',
             name: 'game',
-            message: 'Seleccione el PoKéMoN que desea actualizar:',
+            message: 'Seleccione un PoKéMoN:',
             choices: games,
         });
 }
