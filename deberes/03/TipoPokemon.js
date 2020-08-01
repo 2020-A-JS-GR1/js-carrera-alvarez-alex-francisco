@@ -1,165 +1,208 @@
 const fs = require('fs');
-const path = "data.txt";
-const inquire = require ('inquirer');
+const path = "informacionCRUD.txt";
+const inquirer = require('inquirer');
 
-let tiposPokemon = [];
-let pokemon = [];
+let caseOption = true;
+
+const promiseMenuOptions = () => {
+    return inquirer
+        .prompt({
+            type: 'list',
+            name: 'option',
+            message: 'Seleccione la opcion que desea a continuacion',
+            choices: ['Añadir PoKeMoN','Actualizar PoKéMoN', 'Eliminar PoKéMoN', 'Visualizar PoKéMoN', 'Salir']
+        });
+}
+
+const promiseCrearPokemon = (game) => {
+    return inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'pokemon',
+                message: 'Ingrese el nombre del PoKéMoN',
+                default: game,
+            },
+            {
+                type: 'list',
+                name: 'category',
+                message: 'Elija el tipo de PoKéMoN:',
+                choices: ['Agua', 'Fuego', 'Trueno', 'Roca', 'Hielo', 'Volador', 'Normal', 'Psiquico', 'Raro']
+            },
+            {
+                type: 'list',
+                name: 'completed',
+                message: 'El PoKéMoN cuenta con PS disponibles para la batalla?',
+                choices: ['Si', 'No']
+            },
+            {
+                type: 'list',
+                name: 'recommended',
+                message: 'El sexo del PoKéMoN es:?',
+                choices: ['Male', 'Female']
+            },
+            {
+                type: 'input',
+                name: 'peso',
+                message: 'Ingrese el peso del PoKéMoN',
+                defualt: '0'
+            }
+        ]);
+}
+
+const promiseSeleccionarTipo = (games) => {
+    return inquirer
+        .prompt({
+            type: 'list',
+            name: 'game',
+            message: 'Seleccione un PoKéMoN:',
+            choices: games,
+        });
+}
+
+const promiseLeerPokemons = () => {
+    return new Promise(
+        (res,rej) => {
+            fs.readFile(
+                path,
+                'utf-8',
+                (e, content) => {
+                    if (e) {
+                        rej(e);
+                    }else{
+                        res(content);
+                    }
+                }
+            );
+        }
+    );
+}
+
+const promiseEscribirArchivo = (data) => {
+    return new Promise(
+        (res,rej) => {
+            fs.writeFile(
+                path,
+                data,
+                'utf-8',
+                (e) => {
+                    if (e) {
+                        rej(e);
+                    }else{
+                        res();
+                    }
+                }
+            );
+        }
+    );
+}
+
+function actualizarArchivo(list) {
+    let actualizarLista = '';
+    list.map(
+        (val, ind) => {
+            if (ind < list.length - 1){
+                actualizarLista = actualizarLista + JSON.stringify(val) + '\n';
+            }else{
+                actualizarLista = actualizarLista + JSON.stringify(val);
+            }
+        }
+    );
+    return actualizarLista;
+}
+
+const promiseListaPokemons = (list) => {
+    let todosTipos = '';
+    list.map(
+        (val, ind) => {
+            if (ind < list.length - 1){
+                todosTipos = todosTipos + JSON.stringify(val) + '\n';
+            }else{
+                todosTipos = todosTipos + JSON.stringify(val);
+            }
+        }
+    );
+    return todosTipos;
+}
 
 async function mainMenu() {
+try {
+    while(caseOption){
+        const resLeerPokemons = await promiseLeerPokemons();
+        let pokemonList = [];
 
-    let caseOption = 0;
-    let archivo = JSON.parse(await leerArchivo());
-    tiposPokemon = archivo.Tipos;
-    pokemon = archivo.Pokemons;
-
-    do {
-        console.log("**********SISTEMA DE REGISTRO PoKéMoN**********");
-        console.log("1. Tipos de PoKéMoN");
-        console.log("2. PoKéMoN");
-        console.log("3. Salir");
-
-        await answer.then(
-            async function (opcion) {
-                console.log(opcion.opcion);
-                caseOption = opcion.opcion;
-                switch (caseOption) {
-                    case "1":
-                        await typePokemonMenu();
-                        break;
-                    case "2":
-                        await pokemonMenu();
-                        break;
-                    default:
-                        console.log("Vuelva a intentarlo");
+        if(resLeerPokemons !== ''){
+            pokemonList = resLeerPokemons.split('\n').map(
+                val => {
+                    return JSON.parse(val);
                 }
-            }
-        )
-    }while (caseOption != "3")
-}
+            );
+        }
+        const resOption = await promiseMenuOptions();
+        switch (resOption.option) {
 
-const answer = ()=>{
-    return inquire
-        .prompt([{
-            type: "input",
-            name: "opcion",
-            message: "Ingrese una opcion"
-        }])
-}
-
-async function typePokemonMenu() {
-    let caseOption = 0;
-    do{
-        console.log("**********TIPOS DE PoKéMoN**********");
-        console.log("1. Ingresar un nuevo tipo de PoKéMoN");
-        console.log("2. Visualizar tipos de PoKéMoN");
-        console.log("3. Actualizar tipos de PoKéMoN");
-        console.log("4. Eliminar tipos de PoKéMoN");
-        console.log("5. Volver");
-        
-        await answer().then(
-            async function (opcion) {
-                console.log(opcion.opcion);
-                caseOption = opcion.opcion;
-                switch (caseOption) {
-                    case "1":
-                        const tipo = await ingresoTipo();
-                        tiposPokemon.push(tipo);
-                        await escribirArchivo(JSON.stringify({Tipos: tiposPokemon, Pokemons: pokemon}))
-                        console.log("Se ha ingresado el tipo de PoKéMoN");
-                        break;
-                    case "2":
-                        console.table(tiposPokemon);
-                        break;
-                    case "3":
-                        console.table(tiposPokemon);
-                        await answer().then(
-                            async function (opcion) {
-                                let index = opcion.opcion;
-                                const tipo = await ingresoTipo();
-                                tiposPokemon.splice(index,1,tipo);
-                                await escribirArchivo(JSON.stringify([{Tipos: tiposPokemon, Pokemons: pokemon}]));
-                            })
-                        break;
-                    case "4":
-                        console.table(tiposPokemon);
-                        await answer().then(
-                            async function (opcion) {
-                                let index = opcion.opcion;
-                                console.log(index);
-                                tiposPokemon.splice(index,1);
-                                await escribirArchivo(JSON.stringify([{Tipos: tiposPokemon, Pokemons: pokemon}]));
-                            })
-                        break;
-                    default:
-                        console.log("Vuelva a intentarlo");
-
+            case 'Añadir PoKeMoN':
+                const resAñadirPokemon = await promiseCrearPokemon();
+                if(resLeerPokemons !== ''){
+                    await promiseEscribirArchivo(resLeerPokemons + '\n' + JSON.stringify(resAñadirPokemon));
+                }else{
+                    await promiseEscribirArchivo(JSON.stringify(resAñadirPokemon));
                 }
+                console.log('PoKéMoN agregado exitosamente');
+                break;
 
-            }
-        )
-
-    }while (caseOption != "5");
-}
-
-async function pokemonMenu() {
-    let caseOption = 0;
-    do{
-        console.log("**********PoKéMoNs**********");
-        console.log("1. Ingresar un nuevo PoKéMoN");
-        console.log("2. Visualizar PoKéMoNs");
-        console.log("3. Actualizar PoKéMoNs");
-        console.log("4. Eliminar PoKéMoNs");
-        console.log("5. Volver");
-
-        await answer().then(
-            async function (opcion) {
-                console.log(opcion.opcion);
-                caseOption = opcion.opcion;
-                switch (caseOption) {
-                    case "1":
-                        const indpokemon = await ingresoPokemon();
-                        pokemon.push(indpokemon);
-                        await escribirArchivo(JSON.stringify({Tipos: tiposPokemon, Pokemons: pokemon}))
-                        console.log("Se ha ingresado el PoKéMoN");
-                        break;
-                    case "2":
-                        console.table(pokemon);
-                        break;
-                    case "3":
-                        console.table(pokemon);
-                        await answer().then(
-                            async function (opcion) {
-                                let index = opcion.opcion;
-                                const indpokemon = await ingresoPokemon();
-                                pokemon.splice(index,1,indpokemon);
-                                await escribirArchivo(JSON.stringify([{Tipos: tiposPokemon, Pokemons: pokemon}]));
-                            })
-                        break;
-                    case "4":
-                        console.table(pokemon);
-                        await answer().then(
-                            async function (opcion) {
-                                let index = opcion.opcion;
-                                console.log(index);
-                                pokemon.splice(index,1);
-                                await escribirArchivo(JSON.stringify([{Tipos: tiposPokemon, Pokemons: pokemon}]));
-                            })
-                        break;
-                    default:
-                        console.log("Vuelva a intentarlo");
-
+            case 'Actualizar PoKéMoN':
+                if (pokemonList.length === 0) {
+                    console.log('No existen PoKéMoNs registrados');
+                }else{
+                    const resActualizarPokemon = await promiseSeleccionarTipo(pokemonList.map(
+                        val => {
+                            return val.pokemon;
+                        }
+                    ));
+                    pokemonList[pokemonList.findIndex(
+                        val =>{
+                            return val.pokemon === resActualizarPokemon.pokemon;
+                        }
+                    )] = await promiseCrearPokemon(resActualizarPokemon.pokemon);
+                    await promiseEscribirArchivo(actualizarArchivo(pokemonList));
                 }
+                console.log('PoKéMoN actualizado');
+                break;
 
-            }
-        )
+            case 'Eliminar PoKéMoN':
+                if (pokemonList.length === 0) {
+                    console.log('No existen PoKéMoNs registrados');
+                }else {
+                    const resEliminar = await promiseSeleccionarTipo(pokemonList.map(
+                        val => {
+                            return val.pokemon;
+                        }
+                    ));
+                    pokemonList.splice(pokemonList.findIndex(
+                        val => {
+                            return val.pokemon === resEliminar.pokemon;
+                        }
+                    ),1);
+                    await promiseEscribirArchivo(actualizarArchivo(pokemonList));
+                }
+                console.log('PoKéMoN Eliminado');
+                break;
 
-    }while (caseOption != "5");
+            case 'Visualizar PoKéMoN':
+                const resListaPokemons = await promiseListaPokemons(pokemonList);
+                console.table(resListaPokemons);
+                break;
+
+            case 'Salir':
+                caseOption = false;
+                console.log('Ha salido del sistema de Registro PoKéMoN');
+                break;
+        }
+    }
+}catch (e) {
+    console.error('Error: ',e);
+    }
 }
 
-const ingresoTipo = ()=>{
-    return inquire.prompt([{
-        type: "input",
-        name: ""
-    }])
-}
-
+mainMenu();

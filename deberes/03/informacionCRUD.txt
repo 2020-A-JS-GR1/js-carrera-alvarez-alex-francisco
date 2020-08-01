@@ -1,0 +1,2 @@
+{"pokemon":"Raychu","category":"Trueno","completed":"Si","recommended":"Female","peso":"45"}
+{"pokemon":"Charmander","category":"Fuego","completed":"Si","recommended":"Male","peso":"58"}
