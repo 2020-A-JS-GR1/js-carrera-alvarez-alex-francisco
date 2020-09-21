@@ -12,7 +12,7 @@ module.exports = {
 
   attributes: {
 
-    edula:{ // nombre atributo
+    cedula:{ // nombre atributo
       type: 'string',
       required: true, // Por defecto es false
       columnName: 'epn_cedula',
