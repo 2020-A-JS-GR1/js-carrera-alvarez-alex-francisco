@@ -1,27 +1,21 @@
-<!-- Property Binding -->
-<!-- Setear valores a propiedades de una etiqueta -->
+<!--Property Binding -->
+<!--Set values to properties of a tag -->
 <img
   [src]="urlImagen"
   alt=""
-  (click)="ejecutarEventoDioClicImagen()"
->
-
-<!-- interpolación -> TEXTO MUESTRA INTERFAZ -->
-<a [href]="linkTextoEjemplo">
-  <p>{{descripcion}}</p>
+  (click)="executeImageGetClick()"
+  width="100px"
+  height="100px">
+<!--Interpolation -->
+<!--Only text shows in platform -->
+<p>{{exampleText}}</p>
+<a href="">
+  <p>{{description}}</p>
 </a>
-
-<!-- Event Binding-->
+<!--Event Binding -->
+<!--Communication between Html file to TS file -->
 <button
-  (click)="ejecutarEventoDioClic()"
-  (blur)="eventoOnBlur()"
->
-  {{nombreBoton}}
+  (click)="executeEventGetClick()"
+  (blur) ="onBlurEvent()">
+  {{buttonName}}
 </button>
-
-<link rel="stylesheet" href="">
-
-
-
-
-

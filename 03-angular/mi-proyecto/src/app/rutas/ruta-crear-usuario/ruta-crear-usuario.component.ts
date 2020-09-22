@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {UsuarioService} from '../../servicios/http/usuario.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import {UsuarioService} from "../../servicios/http/usuario.service";
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-ruta-crear-usuario',
@@ -11,26 +11,24 @@ export class RutaCrearUsuarioComponent implements OnInit {
 
   constructor(
     private readonly _usuarioService: UsuarioService,
-    private readonly _router: Router
-  ) {
-  }
+    private readonly _router : Router
+  ) { }
 
   ngOnInit(): void {
   }
 
-  crearUsuario(usuario) {
-    const observableCrear = this._usuarioService.crear(usuario);
-
-    observableCrear
+  crearUsuario(usuario){
+    const obsCrear = this._usuarioService.crear(usuario);
+    obsCrear
       .subscribe(
-        (datos) => {
-          const url = ['/usuario', 'lista']
+        (datos)=>{
+          const url = ['/user', 'list'];
           this._router.navigate(url);
         },
-        (error) => {
+        (error)=>{
           console.error('Error', error);
         }
-      )
+      );
   }
 
 }

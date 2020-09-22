@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {UsuarioService} from '../../servicios/http/usuario.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import {UsuarioService} from "../../servicios/http/usuario.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-ruta-editar-usuario',
@@ -9,55 +9,44 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class RutaEditarUsuarioComponent implements OnInit {
   usuario;
-
-  mostrarFormulario = false;
-
-  constructor( //  Inyectamos dependencias
+  mostrarFormulario:boolean = true;
+  constructor(//Inyectamos dependencias
     private readonly _usuarioService: UsuarioService,
-    private readonly _activatedRoute: ActivatedRoute,
-    private readonly _router: Router
+    private readonly _activatedRoute: ActivatedRoute
   ) {
   }
 
-  // ruta-editar-usuario.component.ts
   ngOnInit(): void {
-    const obsRuta = this._activatedRoute.params;
-    obsRuta
+    const obsRoute = this._activatedRoute.params;
+    obsRoute
       .subscribe(
-        (parametros) => { // try
-          const id = Number(parametros.id);
+        (parameters)=>{
+          const id = Number(parameters.id);
           const obsUsuario = this._usuarioService
-            .obtenerUnoPorId(id);
+            .ObtenerUnoPorId(id);
           obsUsuario
             .subscribe(
-              (usuario: any) => {
+              (usuario:any)=>{
                 this.usuario = usuario;
-                this.llenarFormularioConDatosDeUsuario()
               },
-              (error) => {
-                console.error('Error', error);
+              (error)=>{
+                console.log('Error', error);
               }
-            )
+            );
         }
-      )
+      );
   }
 
-  llenarFormularioConDatosDeUsuario() {
-    this.mostrarFormulario = true;
+  llenarFormularioConDatosDeUsuario(){
+    this.mostrarFormulario= true;
   }
-
-  editarUsuario(usuario) {
-    const obsEditarUsuario = this._usuarioService.editar(usuario, this.usuario.id)
+  editarUsuario(usuario){
+    const obsEditarUsuario = this._usuarioService.editar(usuario,this.usuario.id);
     obsEditarUsuario
       .subscribe(
-        (datos) => {
-          const url = ['/usuario', 'lista'];
-          this._router.navigate(url);
-        },
-        (error) => {
-          console.error('Error', error);
-        }
-      )
+        ()=>{},
+        ()=>{}
+      );
   }
 
 }

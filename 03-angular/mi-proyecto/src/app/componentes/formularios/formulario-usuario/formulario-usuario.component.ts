@@ -6,52 +6,51 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./formulario-usuario.component.css']
 })
 export class FormularioUsuarioComponent implements OnInit {
-
   @Input()
-  nombreInput: string;
-
+  nombreInput:string;
   @Input()
   cedulaInput: string;
-
   @Input()
-  estadoCivilInput: string;
+  correoInput:string;
+  @Input()
+  estadoCivilInput:string;
 
   @Output()
-  informacionValidada: EventEmitter<any> = new EventEmitter<any>();
-
-  nombreModelo: string;
-  cedulaModelo: string;
-  estadoCivilModelo: string
-
-  constructor() {
-  }
+  informacionValidada : EventEmitter<any> = new EventEmitter<any>();
+  usuario = {
+    nombreModelo:"",
+    cedulaModelo:"",
+    correoModelo:"",
+    estadoCivilModelo:""
+  };
+  constructor() { }
 
   ngOnInit(): void {
-    if (this.nombreInput && this.cedulaInput && this.estadoCivilInput) {
-      this.nombreModelo = this.nombreInput;
-      this.cedulaModelo = this.cedulaInput;
-      this.estadoCivilModelo = this.estadoCivilInput;
+    if (this.nombreInput && this.cedulaInput && this.correoInput && this.estadoCivilInput)
+    {
+      this.usuario.cedulaModelo = this.cedulaInput;
+      this.usuario.nombreModelo = this.nombreInput;
+      this.usuario.correoModelo = this.correoInput;
+      this.usuario.estadoCivilModelo = this.estadoCivilInput;
     }
   }
-
-  crearUsuario(formulario) {
-    const cedula = this.cedulaModelo;
-    const esNumero = !Number.isNaN(Number(cedula));
-    if (esNumero) {
-      // LLAMAR AL SERVICIO HTTTP Y ENVIAR UN POST AL SERVIDOR CON LOS DATOS DEL FORMULARIO
-      console.log('LISTO :) ')
+  ayuda(){
+    alert('Que necesitas???');
+  }
+  crearUsuario(formulario){
+    const cedula = this.usuario.cedulaModelo;
+    const isNumber = !Number.isNaN(Number(cedula));
+    if (isNumber){
+      // Llamar al servidor
       this.informacionValidada.emit({
-        nombre: this.nombreModelo,
-        cedula: this.cedulaModelo,
-        estadoCivil: this.estadoCivilModelo
-      })
-    } else {
-      console.error('NO ES UN NUMERO')
+        nombre: this.usuario.nombreModelo,
+        cedula: this.usuario.cedulaModelo,
+        correo: this.usuario.correoModelo,
+        estadoCivil: this.usuario.estadoCivilModelo,
+      });
+    }else {
+      console.error("No es un numero");
     }
-  }
-
-  ayuda() {
-    alert('Ayuda')
   }
 
 }

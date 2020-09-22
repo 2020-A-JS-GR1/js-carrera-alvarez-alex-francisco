@@ -1,65 +1,64 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {RutaInicioComponent} from './rutas/ruta-inicio/ruta-inicio.component';
-import {RutaLoginComponent} from './rutas/ruta-login/ruta-login.component';
-import {RutaUsuarioComponent} from './rutas/ruta-usuario/ruta-usuario.component';
-import {RutaListaUsuarioComponent} from './rutas/ruta-lista-usuario/ruta-lista-usuario.component';
-import {RutaCrearUsuarioComponent} from './rutas/ruta-crear-usuario/ruta-crear-usuario.component';
-import {RutaEditarUsuarioComponent} from './rutas/ruta-editar-usuario/ruta-editar-usuario.component';
-import {EstaLogeadoGuard} from './servicios/guards/esta-logeado.guard';
-import {EsAdministradorGuard} from './servicios/guards/es-administrador.guard';
-import {EsSupervisorGuard} from './servicios/guards/es-supervisor.guard';
+import {RutaInicioComponent} from "./rutas/ruta-inicio/ruta-inicio.component";
+import {RutaLoginComponent} from "./rutas/ruta-login/ruta-login.component";
+import {RutaUsuarioComponent} from "./rutas/ruta-usuario/ruta-usuario.component";
+import {RutaListaUsuarioComponent} from "./rutas/ruta-lista-usuario/ruta-lista-usuario.component";
+import {RutaCrearUsuarioComponent} from "./rutas/ruta-crear-usuario/ruta-crear-usuario.component";
+import {RutaEditarUsuarioComponent} from "./rutas/ruta-editar-usuario/ruta-editar-usuario.component";
+import {EstaLogeadoGuard} from "./servicios/guards/esta-logeado.guard";
+import {EstaAdminGuard} from "./servicios/guards/esta-admin.guard";
+import {EstaSuperGuard} from "./servicios/guards/esta-super.guard";
 
 const routes: Routes = [
   {
-    component: RutaInicioComponent, // COMPONENTE
-    path: 'inicio' // URL
+    component: RutaInicioComponent, //Component
+    path: 'home' //URL
   },
   {
-    component: RutaLoginComponent, // COMPONENTE
-    path: 'login' // URL
+    component: RutaLoginComponent, //Component
+    path: 'login' //URL
   },
   {
-    component: RutaUsuarioComponent,
-    path: 'usuario',
-    canActivate: [
+    component: RutaUsuarioComponent, //Component
+    path: 'user',//URL
+    canActivate:[
       EstaLogeadoGuard
     ],
-    children: [
+    children:[
       {
-        path: 'lista',
+        path: 'list',
         component: RutaListaUsuarioComponent
+
       },
       {
-        path: 'crear',
+        path: 'create',
         component: RutaCrearUsuarioComponent,
         canActivate: [
-          EsSupervisorGuard
+          EstaSuperGuard
         ]
+
       },
       {
-        path: 'editar/:id',
+        path: 'edit/:id',
         component: RutaEditarUsuarioComponent,
         canActivate: [
-          EsAdministradorGuard
+          EstaAdminGuard
         ]
+
       },
       {
         path: '',
-        redirectTo: 'lista',
+        redirectTo: 'list',
         pathMatch: 'full'
-      },
+      }
     ]
   },
   {
     path: '',
-    redirectTo: '/inicio',
+    redirectTo: '/home',
     pathMatch: 'full'
-  },
-  // {
-  //   path: '**',
-  //   component: PageNotFoundComponent
-  // }
+  }
 ];
 
 @NgModule({

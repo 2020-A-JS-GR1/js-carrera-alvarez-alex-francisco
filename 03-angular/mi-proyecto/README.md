@@ -1,39 +1,27 @@
-# Archivos 
-- package.json - dependencias scripts
-- tslint - Reglas de escritura npm run lint
-- tsconfig - Configuración del Typescript
-- karma - PRUEBA
-- angular.json - Definen parametros Angular Y  (CSS JS)
+# MiProyecto
 
-------------------------
-# Carpetas
- - node_modules - Dependencias
- - e2e - TESTING
- - src - Fuentes del aplicativo 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
 
-## SRC - Archivos
-- favicon.ico - Icono Aplicativo Web
-- polyfills.ts - Configuraciones avanzadas
-- test.ts - Inicializa las pruebas
-- main.ts - Inicializa el aplicativo
-- styles.css (Estilos globales aplicativo)
-- index.html (Archivo inicial HTML)
+## Development server
 
-## SRC - Carpetas
-- environments - (variables globales ambiente)
-- assets - (img css js pdf word xlsx jpg png)
-- app - Los archivos del aplicativo
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### APP - Archivos
+## Code scaffolding
 
-app.component (web component principal)
- - css (estilos)
- - html (estructura)
- - spec (pruebas)
- - ts (funcionalidad)
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-app.module
- - Modulo principal
+## Build
 
-app-routing.module
- - Modulo RUTEO (mover o navegar dentro del aplicativo)
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
