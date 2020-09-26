@@ -1,6 +1,70 @@
-<h1>Mi Aplicativo</h1>
-<h6>Titulo 6</h6>
-<p>Parrafo</p>
+<!--<h1>Lista de Pelicula</h1>
+
+&lt;!&ndash;Colocando nuestros  componentes&ndash;&gt;
+
+&lt;!&ndash;Directiva -NGFOR - &ndash;&gt;
+&lt;!&ndash;Permite iterar más array-&ndash;&gt;
+<div *ngFor="let movie of mainArray">
+  <app-carta-pelicula
+    [urlImagen]="movie.url"
+    [description]="movie.description"
+    [buttonName]="movie.movieName"
+    (eventGetClickButton)="consoleMss($event)"
+    (eventGetClickImage)="consoleMss($event)">
+
+  </app-carta-pelicula>
+</div>
+<br>
+&lt;!&ndash;Directiva -NGIF - &ndash;&gt;
+&lt;!&ndash;Permite mostrar un valor dependiendo de una condición-&ndash;&gt;
+<p *ngIf="true">OCULTO</p>
+
+<button (click)="createUser()">
+  Crear Usuario
+</button>-->
+
+<!--
+<button (click)="able=!able">
+  {{able ? 'Habilitado': 'Desabilitado'}}
+</button>
+<app-carta-pelicula *ngIf="able">
+
+</app-carta-pelicula>
+-->
+
+<!--
+<div *ngFor="let user of usersArray">
+  {{user.nombre}}
+</div>
+-->
+
+<ul>
+  <li>
+    <a [routerLink]="['home']">
+      Ir Inicio
+    </a>
+  </li>
+  <li>
+    <a [routerLink]="['login']">
+      Ir Login
+    </a>
+  </li>
+  <li *ngIf="_autService.isAuthenticate">
+    <a [routerLink]="['user']">
+      Usuarios
+    </a>
+  </li>
+  ng@
+</ul>
+<button mat-button
+        color="accent">
+</button>
+<router-outlet>
+
+</router-outlet>
+
+<!--
+<p>P&aacute;rrafo</p>
 <ul>
   <li>Papa</li>
   <li>Cebolla</li>
@@ -10,5 +74,13 @@
   <li>B</li>
   <li>C</li>
 </ol>
-<img src="https://www.40defiebre.com/wp-content/uploads/2015/10/imagenes.png" alt="">
-<a href="https://www.google.com">Google</a>
+<img src="https://cnnespanol.cnn.com/wp-content/uploads/2019/12/s_64a163f16ecbb099e52f2f8271f73cbbfcfc9034be4d646f7375e4db1ca6f3d7_1573501883482_ap_19001106049831-1.jpg?quality=100&strip=info&w=320&h=240&crop=1" alt="">
+&lt;!&ndash;anchor - anclar &ndash;&gt;
+<a href="https://www.google.com.ec/">
+  Go to google
+</a>
+<hr>
+<button>
+  My first Button
+</button>
+-->
