@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-entrenadores',
@@ -8,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class EntrenadoresComponent implements OnInit {
 
   @Input()
-  imagen: string;
+  urlImagen: string;
 
   @Input()
   descripcion: string;
@@ -16,8 +16,12 @@ export class EntrenadoresComponent implements OnInit {
   @Input()
   nombreBoton: string;
 
-  urlCarga = 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png';
+  @Output()
+  eventoDioClicEnBoton:EventEmitter<boolean> = new EventEmitter<boolean>()
 
+  ejecutarEventoDioClic(){
+    this.eventoDioClicEnBoton.emit(true);
+  }
 
   constructor() { }
 

@@ -1,5 +1,11 @@
-<img [src]="urlCarga" alt="">
+<img
+  [src]="urlImagen"
+  alt="">
 
-<p>Descripcion</p>
+<p>{{descripcion}}</p>
 
-<button></button>
+<button
+  (click)="ejecutarEventoDioClic()"
+>
+{{nombreBoton}}
+</button>
