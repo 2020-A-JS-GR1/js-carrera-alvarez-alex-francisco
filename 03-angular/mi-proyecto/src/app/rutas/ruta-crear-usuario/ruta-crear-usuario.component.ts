@@ -17,7 +17,7 @@ export class RutaCrearUsuarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  crearUsuario(usuario){
+  crear(usuario){
     const obsCrear = this._usuarioService.crear(usuario);
     obsCrear
       .subscribe(

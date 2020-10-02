@@ -1,9 +1,17 @@
-<app-entrenadores
-  urlImagen = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png"
-  descripcion="Descripcion 1"
-  nombreBoton="Like 1"
-  (eventoDioClicEnBoton)="mensajeConsola($event)"
->
-</app-entrenadores>
-
-<app-pokemones></app-pokemones>
+<ul>
+  <li>
+    <a [routerLink]="['entrenador']">
+      ENTRENADORES
+    </a>
+  </li>
+  <li>
+    <a [routerLink]="['pokemon']">
+      POKEMONES
+    </a>
+  </li>
+  <li>
+    <a [routerLink]="['home']">
+      INICIO
+    </a>
+  </li>
+</ul>

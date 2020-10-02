@@ -3,24 +3,34 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EntrenadoresComponent } from './componentes/entrenadores/entrenadores.component';
-import { PokemonesComponent } from './componentes/pokemones/pokemones.component';
+import { RutaEntrenadorComponent } from './rutas/ruta-entrenador/ruta-entrenador.component';
+import { RutaListaEntrenadoresComponent } from './rutas/ruta-lista-entrenadores/ruta-lista-entrenadores.component';
+import { RutaCrearEntrenadoresComponent } from './rutas/ruta-crear-entrenadores/ruta-crear-entrenadores.component';
+import { RutaEditarEntrenadoresComponent } from './rutas/ruta-editar-entrenadores/ruta-editar-entrenadores.component';
+import { RutaBorrarEntrenadoresComponent } from './rutas/ruta-borrar-entrenadores/ruta-borrar-entrenadores.component';
+import { RutaPokemonComponent } from './rutas/ruta-pokemon/ruta-pokemon.component';
+import { RutaHomeComponent } from './rutas/ruta-home/ruta-home.component';
 import {HttpClientModule} from "@angular/common/http";
-import {EntrenadorService} from "./servicios/http/entrenador.service";
+import {UsuarioService} from "../../../../../03-angular/mi-proyecto/src/app/servicios/http/usuario.service";
 
 @NgModule({
-  declarations: [ //Componentes de angular
+  declarations: [
     AppComponent,
-    EntrenadoresComponent,
-    PokemonesComponent
+    RutaEntrenadorComponent,
+    RutaListaEntrenadoresComponent,
+    RutaCrearEntrenadoresComponent,
+    RutaEditarEntrenadoresComponent,
+    RutaBorrarEntrenadoresComponent,
+    RutaPokemonComponent,
+    RutaHomeComponent
   ],
-  imports: [ //Modulos a utilizar
-    BrowserModule, //Importa ngFor y ngIf
+  imports: [
+    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [//Servicios
-    EntrenadorService
+  providers: [ //Servicios
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })

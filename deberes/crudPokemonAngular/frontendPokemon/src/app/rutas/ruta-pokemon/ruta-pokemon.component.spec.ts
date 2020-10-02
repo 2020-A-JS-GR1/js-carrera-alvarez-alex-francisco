@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EntrenadoresComponent } from './entrenadores.component';
+import { RutaPokemonComponent } from './ruta-pokemon.component';
 
-describe('EntrenadoresComponent', () => {
-  let component: EntrenadoresComponent;
-  let fixture: ComponentFixture<EntrenadoresComponent>;
+describe('RutaPokemonComponent', () => {
+  let component: RutaPokemonComponent;
+  let fixture: ComponentFixture<RutaPokemonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EntrenadoresComponent ]
+      declarations: [ RutaPokemonComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EntrenadoresComponent);
+    fixture = TestBed.createComponent(RutaPokemonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
