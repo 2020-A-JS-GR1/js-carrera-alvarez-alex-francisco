@@ -17,7 +17,7 @@ export class RutaListarEntrenadorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const observableTraerTodos = this._entrenadorService.traerTodos();
+    const observableTraerTodos = this._entrenadorService.get();
     observableTraerTodos
       .subscribe(
         (entrenadores: any[])=>{

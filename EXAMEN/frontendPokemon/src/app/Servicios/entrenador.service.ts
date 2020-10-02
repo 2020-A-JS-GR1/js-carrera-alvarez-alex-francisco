@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {Entrenador} from "../Models/entrenador";
 
 
 @Injectable()
@@ -12,7 +13,23 @@ export class EntrenadorService {
   ){
   }
 
-  traerTodos(){
+  get(){
     return this._httpClient.get(this.url + '/Entrenador')
+  }
+
+  getById(id: string) {
+    return this._httpClient.get(this.url + '/Entrenador/' + id);
+  }
+
+  add(entrenador: Entrenador) {
+    return this._httpClient.post(this.url + '/Entrenador', entrenador);
+  }
+
+  update(id: string, entrenador: Entrenador) {
+    return this._httpClient.put(this.url + '/Entrenador/' + id, entrenador);
+  }
+
+  delete(id: string) {
+    return this._httpClient.delete(this.url + '/Entrenador/' + id);
   }
 }

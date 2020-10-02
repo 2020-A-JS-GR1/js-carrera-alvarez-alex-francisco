@@ -1,41 +1,43 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {RutaPokemonComponent} from "./Rutas/ruta-pokemon/ruta-pokemon.component";
-import {RutaEntrenadorComponent} from "./Rutas/ruta-entrenador/ruta-entrenador.component";
 import {RutaListarEntrenadorComponent} from "./Rutas/ruta-listar-entrenador/ruta-listar-entrenador.component";
 import {RutaCrearEntrenadorComponent} from "./Rutas/ruta-crear-entrenador/ruta-crear-entrenador.component";
 import {RutaEditarEntrenadorComponent} from "./Rutas/ruta-editar-entrenador/ruta-editar-entrenador.component";
+import {RutaListarPokemonComponent} from "./Rutas/ruta-listar-pokemon/ruta-listar-pokemon.component";
+import {RutaCrearPokemonComponent} from "./Rutas/ruta-crear-pokemon/ruta-crear-pokemon.component";
+import {RutaEditarPokemonComponent} from "./Rutas/ruta-editar-pokemon/ruta-editar-pokemon.component";
 
 
 const routes: Routes = [
   {
-    component: RutaEntrenadorComponent,
-    path: "entrenador",
-    children:[
-      {
-        component: RutaListarEntrenadorComponent,
-        path: "listar",
-      },
-      {
-        component: RutaCrearEntrenadorComponent,
-        path: "crear",
-      },
-      {
-        component: RutaEditarEntrenadorComponent,
-        path: "editar",
-      },
-      {
-        path: "",
-        redirectTo: "listar",
-        pathMatch: "full"
-      },
-
-    ]
+    component: RutaListarEntrenadorComponent,
+    path: 'listarEntrenador',
+  }
+  ,{
+    component: RutaListarPokemonComponent,
+    path: 'listarPokemon',
   },
   {
-    component: RutaPokemonComponent,
-    path: "pokemon"
+    component: RutaCrearEntrenadorComponent,
+    path: 'crearEntrenador',
   },
+  {
+    component: RutaCrearPokemonComponent,
+    path: 'crearPokemon',
+  },
+  {
+    component: RutaEditarPokemonComponent,
+    path: 'editarPokemon',
+  },
+  {
+    component: RutaEditarEntrenadorComponent,
+    path: 'editarEntrenador',
+  },
+  {
+    path: '',
+    redirectTo: '/listaEntrenador',
+    pathMatch: 'full',
+  }
 
 ];
 
