@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EntrenadorService} from "../../Servicios/entrenador.service";
 import {PokemonService} from "../../Servicios/pokemon.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ruta-listar-pokemon',
@@ -12,9 +13,15 @@ export class RutaListarPokemonComponent implements OnInit {
   arregloPokemones =[];
 
   constructor(
-    private readonly _pokemonService: PokemonService
+    private readonly _pokemonService: PokemonService,
+    private readonly _router: Router
   ) {
 
+  }
+
+  irAEditarPokemon(id: number){
+    const ruta = ['editarPokemon', id]
+    this._router.navigate(ruta);
   }
 
   ngOnInit(): void {

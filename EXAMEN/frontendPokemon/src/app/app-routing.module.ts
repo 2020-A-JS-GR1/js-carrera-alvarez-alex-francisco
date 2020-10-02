@@ -27,11 +27,11 @@ const routes: Routes = [
   },
   {
     component: RutaEditarPokemonComponent,
-    path: 'editarPokemon',
+    path: 'editarPokemon/:id',
   },
   {
     component: RutaEditarEntrenadorComponent,
-    path: 'editarEntrenador',
+    path: 'editarEntrenador/:id',
   },
   {
     path: '',

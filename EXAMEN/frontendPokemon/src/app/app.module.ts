@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RutaListarEntrenadorComponent } from './Rutas/ruta-listar-entrenador/ruta-listar-entrenador.component';
@@ -12,6 +13,9 @@ import { RutaListarPokemonComponent } from './Rutas/ruta-listar-pokemon/ruta-lis
 import {HttpClientModule} from "@angular/common/http";
 import {EntrenadorService} from "./Servicios/entrenador.service";
 import {PokemonService} from "./Servicios/pokemon.service";
+import { FormularioEntrenadorComponent } from './Formularios/formulario-entrenador/formulario-entrenador.component';
+import {FormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
@@ -21,12 +25,15 @@ import {PokemonService} from "./Servicios/pokemon.service";
     RutaEditarEntrenadorComponent,
     RutaEditarPokemonComponent,
     RutaCrearPokemonComponent,
-    RutaListarPokemonComponent
+    RutaListarPokemonComponent,
+    FormularioEntrenadorComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [
     EntrenadorService,

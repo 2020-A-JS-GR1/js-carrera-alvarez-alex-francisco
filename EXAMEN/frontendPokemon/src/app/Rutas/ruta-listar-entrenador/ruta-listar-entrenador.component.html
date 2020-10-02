@@ -1,16 +1,20 @@
 <table>
   <tr>
+    <th>ID</th>
     <th>NOMBRE</th>
     <th>EDAD</th>
     <th>REGION</th>
   </tr>
   <tr *ngFor="let entrenador of arregloEntrenadores">
+    <td>{{entrenador.id}}</td>
     <td>{{entrenador.nombre}}</td>
     <td>{{entrenador.edad}}</td>
     <td>{{entrenador.region}}</td>
     <td>
-      <button>Editar</button>
-      <button>Eliminar</button>
+      <button (click)="iraEditarEntrenador(entrenador.id)">Editar</button>
+      <button (click)="iraEliminarEntrenador(entrenador.id)">Eliminar</button>
     </td>
   </tr>
 </table>
+
+<button [routerLink]="['/crearEntrenador']">Crear</button>

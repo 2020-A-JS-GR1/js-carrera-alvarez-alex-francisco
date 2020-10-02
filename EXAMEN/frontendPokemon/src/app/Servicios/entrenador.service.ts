@@ -17,7 +17,7 @@ export class EntrenadorService {
     return this._httpClient.get(this.url + '/Entrenador')
   }
 
-  getById(id: string) {
+  getById(id: number) {
     return this._httpClient.get(this.url + '/Entrenador/' + id);
   }
 
@@ -25,11 +25,11 @@ export class EntrenadorService {
     return this._httpClient.post(this.url + '/Entrenador', entrenador);
   }
 
-  update(id: string, entrenador: Entrenador) {
+  update(id: number, entrenador: Entrenador) {
     return this._httpClient.put(this.url + '/Entrenador/' + id, entrenador);
   }
 
-  delete(id: string) {
+  delete(id: number) {
     return this._httpClient.delete(this.url + '/Entrenador/' + id);
   }
 }

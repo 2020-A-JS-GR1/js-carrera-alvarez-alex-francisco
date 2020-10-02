@@ -1,0 +1,69 @@
+<form (ngSubmit)="crearEntrenador(formularioEntrenador)"
+    #formularioEntrenador="ngForm">
+
+  <div>
+    <label for="nombreID">NOMBRE</label>
+    <input id="nombreID"
+           type="text"
+           name="nombre"
+           [(ngModel)]="nombre"
+           required
+           #nombreCampo="ngModel"
+    >
+  </div>
+
+
+  <div *ngIf="nombreCampo.touched && nombreCampo.errors">
+    <p *ngIf="nombreCampo.errors.required">
+      ERROR: Campo Requerido
+    </p>
+  </div>
+
+  <div>
+    <label for="edadID">EDAD</label>
+    <input id="edadID"
+           type="number"
+           name="edad"
+           [(ngModel)]="edad"
+           required
+           minlength="3"
+           maxlength="100"
+           #EdadCampo="ngModel"
+    >
+  </div>
+
+  <div *ngIf="EdadCampo.touched && EdadCampo.errors">
+    <p *ngIf="EdadCampo.errors.required">
+      ERROR: Campo Requerido
+    </p>
+    <p *ngIf="EdadCampo.errors.minlength">
+      ERROR: Longitud minima
+    </p>
+  </div>
+
+  <div>
+    <label for="regionID">REGION</label>
+    <input id="regionID"
+           type="text"
+           name="region"
+           [(ngModel)]="region"
+           required
+           #regionCampo="ngModel"
+    >
+  </div>
+
+  <div *ngIf="regionCampo.touched && regionCampo.errors">
+    <p *ngIf="regionCampo.errors.required">
+      ERROR: Campo Requerido
+    </p>
+  </div>
+
+  <button type="submit" [disabled]="!formularioEntrenador.form.valid">
+    Submit
+  </button>
+  <button type="reset">
+    Reset
+  </button>
+
+
+</form>
