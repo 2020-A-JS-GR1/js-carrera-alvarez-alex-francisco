@@ -17,7 +17,7 @@ export class PokemonService {
     return this._httpClient.get(this.url + '/Pokemon')
   }
 
-  getById(id: string) {
+  getById(id: number) {
     return this._httpClient.get(this.url + '/Pokemon/' + id);
   }
 
@@ -25,11 +25,11 @@ export class PokemonService {
     return this._httpClient.post(this.url + '/Pokemon', pokemon);
   }
 
-  update(id: string, pokemon: Pokemon) {
+  update(pokemon: Pokemon, id) {
     return this._httpClient.put(this.url + '/Pokemon/' + id, pokemon);
   }
 
-  delete(id: string) {
+  delete(id: number) {
     return this._httpClient.delete(this.url + '/Pokemon/' + id);
   }
 }

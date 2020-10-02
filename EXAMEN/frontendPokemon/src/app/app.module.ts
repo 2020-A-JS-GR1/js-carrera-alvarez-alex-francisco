@@ -15,6 +15,7 @@ import {EntrenadorService} from "./Servicios/entrenador.service";
 import {PokemonService} from "./Servicios/pokemon.service";
 import { FormularioEntrenadorComponent } from './Formularios/formulario-entrenador/formulario-entrenador.component';
 import {FormsModule} from "@angular/forms";
+import { FormularioPokemonComponent } from './Formularios/formulario-pokemon/formulario-pokemon.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {FormsModule} from "@angular/forms";
     RutaCrearPokemonComponent,
     RutaListarPokemonComponent,
     FormularioEntrenadorComponent,
+    FormularioPokemonComponent,
 
   ],
   imports: [

@@ -24,6 +24,23 @@ export class RutaListarPokemonComponent implements OnInit {
     this._router.navigate(ruta);
   }
 
+  iraEliminarPokemon(id: number){
+    const obsEliminar = this._pokemonService
+      .delete(id);
+    obsEliminar
+      .subscribe(
+        ()=>{
+          const indice = this.arregloPokemones
+            .findIndex(u => u.id === id);
+          this.arregloPokemones.splice(indice,
+            1);
+        },
+        (error)=>{
+          console.error('Error',error);
+        }
+      )
+  }
+
   ngOnInit(): void {
     const observableTraerTodos = this._pokemonService.get();
     observableTraerTodos

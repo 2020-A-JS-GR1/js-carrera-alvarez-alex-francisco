@@ -1,1 +1,17 @@
-<p>ruta-editar-pokemon works!</p>
+<p>{{pokemon?.nombre}}</p>
+<p>{{pokemon?.tipo}}</p>
+<p>{{pokemon?.sexo}}</p>
+<p>{{pokemon?.peso}}</p>
+<p>{{pokemon?.entrenador.nombre}}</p>
+
+<div *ngIf="mostrarFormulario">
+  <app-formulario-pokemon
+    [nombreImput]="pokemon.nombre"
+    [tipoImput] = "pokemon.tipo"
+    [sexoInput]= "pokemon.sexo"
+    [pesoInput]= "pokemon.peso"
+    [entrenadorInput]="pokemon.entrenador.id"
+    (informacionValidada)="editarPokemon($event)"
+  >
+  </app-formulario-pokemon>
+</div>

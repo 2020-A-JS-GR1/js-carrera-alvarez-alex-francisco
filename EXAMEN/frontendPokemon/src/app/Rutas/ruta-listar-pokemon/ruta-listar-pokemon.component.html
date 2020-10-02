@@ -5,6 +5,7 @@
     <th>TIPO</th>
     <th>SEXO</th>
     <th>PESO</th>
+    <th>ENTRENADOR</th>
   </tr>
   <tr *ngFor="let pokemon of arregloPokemones">
     <td>{{pokemon.id}}</td>
@@ -12,9 +13,12 @@
     <td>{{pokemon.tipo}}</td>
     <td>{{pokemon.sexo}}</td>
     <td>{{pokemon.peso}}</td>
+    <td>{{pokemon.entrenador.nombre}}</td>
     <td>
       <button (click)="irAEditarPokemon(pokemon.id)">Editar</button>
-      <button>Eliminar</button>
+      <button (click)="iraEliminarPokemon(pokemon.id)">Eliminar</button>
     </td>
   </tr>
 </table>
+
+<button [routerLink]="['/crearPokemon']">Crear</button>

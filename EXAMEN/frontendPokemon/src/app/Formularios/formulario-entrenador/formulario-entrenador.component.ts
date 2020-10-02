@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-formulario-entrenador',
@@ -7,6 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioEntrenadorComponent implements OnInit {
 
+  @Input()
+  nombreImput: string;
+
+  @Input()
+  edadImput: number;
+
+  @Input()
+  regionImput: string;
+
+  @Output()
+  informacionValidada: EventEmitter <any> = new EventEmitter<any>();
+
   nombre: string;
   edad: number;
   region: string;
@@ -14,10 +26,22 @@ export class FormularioEntrenadorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if(this.nombreImput && this.edadImput && this.regionImput){
+      this.nombre = this.nombreImput;
+      this.edad = this.edadImput;
+      this.region = this.regionImput;
+    }
   }
 
   crearEntrenador(formulario){
     console.log(formulario);
+    this.informacionValidada.emit(
+      {
+        nombre: this.nombre,
+        edad: this.edad,
+        region: this.region
+      }
+    )
   }
 
 }

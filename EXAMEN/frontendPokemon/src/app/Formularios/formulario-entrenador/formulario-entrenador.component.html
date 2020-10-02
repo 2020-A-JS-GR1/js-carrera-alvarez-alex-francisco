@@ -13,12 +13,6 @@
   </div>
 
 
-  <div *ngIf="nombreCampo.touched && nombreCampo.errors">
-    <p *ngIf="nombreCampo.errors.required">
-      ERROR: Campo Requerido
-    </p>
-  </div>
-
   <div>
     <label for="edadID">EDAD</label>
     <input id="edadID"
@@ -32,14 +26,6 @@
     >
   </div>
 
-  <div *ngIf="EdadCampo.touched && EdadCampo.errors">
-    <p *ngIf="EdadCampo.errors.required">
-      ERROR: Campo Requerido
-    </p>
-    <p *ngIf="EdadCampo.errors.minlength">
-      ERROR: Longitud minima
-    </p>
-  </div>
 
   <div>
     <label for="regionID">REGION</label>
@@ -52,11 +38,6 @@
     >
   </div>
 
-  <div *ngIf="regionCampo.touched && regionCampo.errors">
-    <p *ngIf="regionCampo.errors.required">
-      ERROR: Campo Requerido
-    </p>
-  </div>
 
   <button type="submit" [disabled]="!formularioEntrenador.form.valid">
     Submit

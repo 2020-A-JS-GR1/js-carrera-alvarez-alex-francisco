@@ -23,7 +23,6 @@ export class RutaCrearEntrenadorComponent implements OnInit {
     observableCrearEntrenador
       .subscribe(
         ()=>{
-          alert('Entrenador registrado Exitosamente');
           const ruta = ['/listarEntrenador'];
           this._router.navigate(ruta);
         },

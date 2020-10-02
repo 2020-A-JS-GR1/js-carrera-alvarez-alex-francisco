@@ -25,7 +25,7 @@ export class EntrenadorService {
     return this._httpClient.post(this.url + '/Entrenador', entrenador);
   }
 
-  update(id: number, entrenador: Entrenador) {
+  update(entrenador: Entrenador,id) {
     return this._httpClient.put(this.url + '/Entrenador/' + id, entrenador);
   }
 

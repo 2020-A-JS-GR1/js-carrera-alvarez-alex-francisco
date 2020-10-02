@@ -1,0 +1,68 @@
+<form (ngSubmit)="crearPokemon(formularioPokemon)"
+      #formularioPokemon="ngForm">
+  <div>
+    <label for="nombreID">NOMBRE</label>
+    <input id="nombreID"
+           type="text"
+           name="nombre"
+           [(ngModel)]="nombre"
+           required
+           #nombreCampo="ngModel"
+    >
+  </div>
+
+  <div>
+    <label for="tipoID">TIPO</label>
+    <select name="tipo" id="tipoID">
+      <option value="Agua">AGUA</option>
+      <option value="Fuego">FUEGO</option>
+      <option value="Trueno">TRUENO</option>
+      <option value="Roca">ROCA</option>
+      <option value="Normal">NORMAL</option>
+      <option value="Psiquico">PSIQUICO</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="sexoID">TIPO</label>
+    <select name="sexo" id="sexoID">
+      <option value="Male">MALE</option>
+      <option value="Female">FEMALE</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="pesoID">PESO</label>
+    <input id="pesoID"
+           type="number"
+           name="peso"
+           [(ngModel)]="peso"
+           required
+           minlength="3"
+           maxlength="100"
+           #PesoCampo="ngModel"
+    >
+  </div>
+
+  <div>
+    <label for="entrenadorID">ENTRENADOR</label>
+    <input id="entrenadorID"
+           type="number"
+           name="entrenador"
+           [(ngModel)]="entrenador"
+           required
+           minlength="3"
+           maxlength="100"
+           #EntrenadorCampo="ngModel"
+    >
+  </div>
+
+  <button type="submit" [disabled]="formularioPokemon.form.valid">
+    Submit
+  </button>
+
+  <button type="reset">
+    Reset
+  </button>
+
+</form>

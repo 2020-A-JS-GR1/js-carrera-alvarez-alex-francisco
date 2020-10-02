@@ -2,3 +2,12 @@
 <p>{{entrenador?.edad}}</p>
 <p>{{entrenador?.region}}</p>
 
+<div *ngIf="mostrarFormulario">
+<app-formulario-entrenador
+  [nombreImput]="entrenador.nombre"
+  [edadImput]="entrenador.edad"
+  [regionImput]="entrenador.region"
+  (informacionValidada)="editarEntrenador($event)"
+>
+</app-formulario-entrenador>
+</div>
