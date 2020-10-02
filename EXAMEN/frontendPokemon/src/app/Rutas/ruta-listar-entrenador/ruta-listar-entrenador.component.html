@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>NOMBRE</th>
+    <th>EDAD</th>
+    <th>REGION</th>
+  </tr>
+  <tr *ngFor="let entrenador of arregloEntrenadores">
+    <td>{{entrenador.nombre}}</td>
+    <td>{{entrenador.edad}}</td>
+    <td>{{entrenador.region}}</td>
+    <td>
+      <button>Editar</button>
+      <button>Eliminar</button>
+    </td>
+  </tr>
+</table>
